@@ -1,0 +1,27 @@
+Known Issue 1)
+In section 2 question 4 we were asked to copy an existing quiz.
+-	We understood it to be a copy of an existing quiz file.
+-	We later got confirmation that the point of this question is to see if we know how to clone objects and no file knowledge is necessary
+
+Therefore, we kept both options. With the first, you designate a quiz date and a copy of a file is made.
+with the second, whenever we create a quiz, a volatile ArrayList lastCreatedQuizBank holds a clone of each quiz (up to the last 10) for presentation and saving with a _copy suffix.
+
+We state this because we swayed a bit from what was initially asked.
+
+Known Issue 2)
+During the cloning process for the Quiz object we found several levels of deep cloning:
+
+Quiz -> ArrayList<Questions> -> Questions -> OpenEndQuestions/MultipleChoiceQuestions -> Set<MultipleChoiceOption> -> MultipleChoiceOption
+
+This means that to fully clone a quiz it was necessary to add cloneability to most of these objects to do so to the utmost correctness.
+Given that the aim was to show deep cloning knowledge in general we did the cloning up until the abstract Class of Questions.
+This means that if an exam contains MultipleChoiceQuestions these questions will be cloned properly except the MultipleChoiceOptions found in the Set<MultipleChoiceOption> within the object.
+
+There are 2 fixes to that:
+- There must be a use of instanceof within the abstract Class of Question.
+This is bad practice!
+
+- Each type of Question should have had its own clone function and their use would have been determined up&down the reference chain.
+This is too excessive a task to do for an object that is mostly never changed or altered
+
+Therefore, the amount of levels of cloneability is enough to present our knowledge of it.
