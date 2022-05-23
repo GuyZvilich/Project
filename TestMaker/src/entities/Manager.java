@@ -429,9 +429,11 @@ public class Manager {
         lastCreatedQuizBank.add(quiz);
     }
 
-    public static void showQuestionBank() {
+    public static String showQuestionBank() {
+    	StringBuffer quests = new StringBuffer();
         for (Question question : questionBank)
-            System.out.print((question == null ? "" : question + "\n\n"));
+        	quests.append(question == null ? "" : question + "\n\n");
+        return quests.toString();
     }
 
     public static void removeAnswer(int num) {

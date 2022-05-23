@@ -51,6 +51,7 @@ public class Constants {
     public static final String QUESTION_TO_USER_17 = "Is this option a correct answer to the question?(Y/N)";
     public static final String QUESTION_TO_USER_18 = "What is the creation date of the Quiz you'd like to make a copy of?\nPlease provide it in a dd/mm/yyyy format";
     public static final String QUESTION_TO_USER_19 = "How would you like to copy a quiz?\n1 - From existing files\n2 - Clone a previously made quiz (with the _copy extension)\nPlease note; if no file exist/there is no clone available, no action will take place";
+    public static final String QUESTION_TO_USER_20 = "What is the creation date of the Quiz you'd like to make a copy of?";
 
     public static final String EXIT_MESSAGE = "Wrong option";
 
