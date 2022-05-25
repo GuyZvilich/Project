@@ -113,6 +113,22 @@ public class Main extends Application {
 			TextField tfanswer6 = new TextField();
 			TextField tfanswer7 = new TextField();
 			TextField tfanswer8 = new TextField();
+			CheckBox cbAnswer1 = new CheckBox();
+			CheckBox cbAnswer2 = new CheckBox();
+			CheckBox cbAnswer3 = new CheckBox();
+			CheckBox cbAnswer4 = new CheckBox();
+			CheckBox cbAnswer5 = new CheckBox();
+			CheckBox cbAnswer6 = new CheckBox();
+			CheckBox cbAnswer7 = new CheckBox();
+			CheckBox cbAnswer8 = new CheckBox();
+			Label lblIsTrue1 = new Label("Is this answer is true?");
+			Label lblIsTrue2 = new Label("Is this answer is true?");
+			Label lblIsTrue3 = new Label("Is this answer is true?");
+			Label lblIsTrue4 = new Label("Is this answer is true?");
+			Label lblIsTrue5 = new Label("Is this answer is true?");
+			Label lblIsTrue6 = new Label("Is this answer is true?");
+			Label lblIsTrue7 = new Label("Is this answer is true?");
+			Label lblIsTrue8 = new Label("Is this answer is true?");
 			Button btnSendNewQuestion = new Button("Send");
 			Button btnNewMultiOptions = new Button("Send");
 			TextField tfwhatQuestion = new TextField();
@@ -127,20 +143,36 @@ public class Main extends Application {
 			gettingQuestionAnswers.add(tfwhatAnswer, 2, 2);
 			gettingQuestionAnswers.add(lblanswer1, 1, 2);
 			gettingQuestionAnswers.add(tfanswer1, 2, 2);
+			gettingQuestionAnswers.add(lblIsTrue1, 3, 2);
+			gettingQuestionAnswers.add(cbAnswer1, 4, 2);
 			gettingQuestionAnswers.add(lblanswer2, 1, 3);
 			gettingQuestionAnswers.add(tfanswer2, 2, 3);
+			gettingQuestionAnswers.add(lblIsTrue2, 3, 3);
+			gettingQuestionAnswers.add(cbAnswer2, 4, 3);
 			gettingQuestionAnswers.add(lblanswer3, 1, 4);
 			gettingQuestionAnswers.add(tfanswer3, 2, 4);
+			gettingQuestionAnswers.add(lblIsTrue3, 3, 4);
+			gettingQuestionAnswers.add(cbAnswer3, 4, 4);
 			gettingQuestionAnswers.add(lblanswer4, 1, 5);
 			gettingQuestionAnswers.add(tfanswer4, 2, 5);
+			gettingQuestionAnswers.add(lblIsTrue4, 3, 5);
+			gettingQuestionAnswers.add(cbAnswer4, 4, 5);
 			gettingQuestionAnswers.add(lblanswer5, 1, 6);
 			gettingQuestionAnswers.add(tfanswer5, 2, 6);
+			gettingQuestionAnswers.add(lblIsTrue5, 3, 6);
+			gettingQuestionAnswers.add(cbAnswer5, 4, 6);
 			gettingQuestionAnswers.add(lblanswer6, 1, 7);
 			gettingQuestionAnswers.add(tfanswer6, 2, 7);
+			gettingQuestionAnswers.add(lblIsTrue6, 3, 7);
+			gettingQuestionAnswers.add(cbAnswer6, 4, 7);
 			gettingQuestionAnswers.add(lblanswer7, 1, 8);
 			gettingQuestionAnswers.add(tfanswer7, 2, 8);
+			gettingQuestionAnswers.add(lblIsTrue7, 3, 8);
+			gettingQuestionAnswers.add(cbAnswer7, 4, 8);
 			gettingQuestionAnswers.add(lblanswer8, 1, 9);
 			gettingQuestionAnswers.add(tfanswer8, 2, 9);
+			gettingQuestionAnswers.add(lblIsTrue8, 3, 9);
+			gettingQuestionAnswers.add(cbAnswer8, 4, 9);
 			gettingQuestionAnswers.add(btnSendNewQuestion,2,11);
 			gettingQuestionAnswers.add(btnNewMultiOptions, 2, 11);
 			gettingQuestionAnswers.add(lblEmptyField2, 0, 12);
@@ -165,6 +197,22 @@ public class Main extends Application {
 			tfanswer7.setVisible(false);
 			lblanswer8.setVisible(false);
 			tfanswer8.setVisible(false);
+			cbAnswer1.setVisible(false);
+			cbAnswer2.setVisible(false);
+			cbAnswer3.setVisible(false);
+			cbAnswer4.setVisible(false);
+			cbAnswer5.setVisible(false);
+			cbAnswer6.setVisible(false);
+			cbAnswer7.setVisible(false);
+			cbAnswer8.setVisible(false);
+			lblIsTrue1.setVisible(false);
+			lblIsTrue2.setVisible(false);
+			lblIsTrue3.setVisible(false);
+			lblIsTrue4.setVisible(false);
+			lblIsTrue5.setVisible(false);
+			lblIsTrue6.setVisible(false);
+			lblIsTrue7.setVisible(false);
+			lblIsTrue8.setVisible(false);
 			btnOpenQuestion.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
@@ -238,20 +286,38 @@ public class Main extends Application {
 					tfwhatQuestion.setVisible(true);
 					lblanswer1.setVisible(true);
 					tfanswer1.setVisible(true);
+					lblIsTrue1.setVisible(true);
+					cbAnswer1.setVisible(true);
 					lblanswer2.setVisible(true);
 					tfanswer2.setVisible(true);
+					lblIsTrue2.setVisible(true);
+					cbAnswer2.setVisible(true);
 					lblanswer3.setVisible(true);
 					tfanswer3.setVisible(true);
+					lblIsTrue3.setVisible(true);
+					cbAnswer3.setVisible(true);
 					lblanswer4.setVisible(true);
 					tfanswer4.setVisible(true);
+					lblIsTrue4.setVisible(true);
+					cbAnswer4.setVisible(true);
 					lblanswer5.setVisible(true);
 					tfanswer5.setVisible(true);
+					lblIsTrue5.setVisible(true);
+					cbAnswer5.setVisible(true);
 					lblanswer6.setVisible(true);
 					tfanswer6.setVisible(true);
+					lblIsTrue6.setVisible(true);
+					cbAnswer6.setVisible(true);
 					lblanswer7.setVisible(true);
 					tfanswer7.setVisible(true);
+					lblIsTrue7.setVisible(true);
+					cbAnswer7.setVisible(true);
 					lblanswer8.setVisible(true);
 					tfanswer8.setVisible(true);
+					lblIsTrue8.setVisible(true);
+					cbAnswer8.setVisible(true);
+					
+					
 				
 					
 					btnNewMultiOptions.setVisible(true);
@@ -336,6 +402,20 @@ public class Main extends Application {
 			StackPane root2 = new StackPane();
 			ScrollPane QuestionBank = new ScrollPane();
 			QuestionBank.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+			GridPane OpenWindow = new GridPane();
+			OpenWindow.setVisible(true);
+			Label lblWelcome = new Label("Welcome to the Test Maker!");
+			lblWelcome.setVisible(true);
+			
+			lblWelcome.setStyle("-fx-font-size: 2.0em;");
+			Label lblMadeBy = new Label("made by Guy Zvilich and Dimitry Gordon");
+			lblMadeBy.setVisible(true);
+			Label lblWhatIsHere = new Label(" - You can look at our question bank. \n - You can create your own questions and add them to our bank. \n - You can update a qustion/answer as you like or even remove an answer. \n -  You can create your own managed quiz and if you feel lazy you can create quiz randomly! \n - You Can copy a quiz from one that is already exist!");
+			OpenWindow.add(lblWelcome,3,1);
+			OpenWindow.add(lblWhatIsHere,3,6);
+			
+			OpenWindow.add(lblMadeBy,1,10);
+			lblMadeBy.setPadding(new Insets(10));
 			
 			GridPane UpdateAnswer = new GridPane();
 			Label lblGetQuestionIDForAnswer = new Label("What is the ID of the question you'd like to update?");
@@ -385,6 +465,7 @@ public class Main extends Application {
 			lblEmptyField7.setTextFill(Color.RED);
 			HowManyRandom.setVisible(false);
 			ScrollPane RandomQuiz= new ScrollPane();
+			RandomQuiz.setVisible(false);
 			RandomQuiz.setVbarPolicy(ScrollBarPolicy.ALWAYS);
 			
 			BorderPane CopyQuiz = new BorderPane();
@@ -470,6 +551,7 @@ public class Main extends Application {
 			userManaged.setTop(lblInstructionsForUserManaged);
 			userManaged.setBottom(btnGenerateUserManaged);
 			userManaged.setCenter(fp);
+			userManaged.setVisible(false);
 			RemoveAnswer.setHgap(10);
 			RemoveAnswer.setVgap(10);
 			Label lblGetQuestionIDToRemove = new Label("What is the ID of the question you'd like to update?");
@@ -517,7 +599,7 @@ public class Main extends Application {
 			fp.setHgap(10);
 			fp.setVgap(10);
 			root.setTop(hbRootbuttons);
-			root2.getChildren().addAll(userManaged,QuestionBank,addQuestion,UpdateQuestion,UpdateAnswer,RemoveAnswer,HowManyRandom,CopyQuiz,RandomQuiz);
+			root2.getChildren().addAll(OpenWindow,userManaged,QuestionBank,addQuestion,UpdateQuestion,UpdateAnswer,RemoveAnswer,HowManyRandom,CopyQuiz,RandomQuiz);
 			btn1.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
