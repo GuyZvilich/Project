@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -102,6 +103,7 @@ public class Main extends Application {
 			Label lblwhatQuestion = new Label("What is the question?");
 			Label lblwhatAnswer = new Label("What is the answer?");
 			Label lblEmptyField2 = new Label("One of the required fields are empty");
+			Label lblVerdict = new Label();
 			lblEmptyField2.setVisible(false);
 			lblEmptyField2.setPadding(new Insets(10));
 			lblEmptyField2.setTextFill(Color.RED);
@@ -173,6 +175,7 @@ public class Main extends Application {
 			gettingQuestionAnswers.add(tfanswer8, 2, 9);
 			gettingQuestionAnswers.add(lblIsTrue8, 3, 9);
 			gettingQuestionAnswers.add(cbAnswer8, 4, 9);
+			gettingQuestionAnswers.add(lblVerdict, 2, 10);
 			gettingQuestionAnswers.add(btnSendNewQuestion,2,11);
 			gettingQuestionAnswers.add(btnNewMultiOptions, 2, 11);
 			gettingQuestionAnswers.add(lblEmptyField2, 0, 12);
@@ -217,31 +220,43 @@ public class Main extends Application {
 
 				@Override
 				public void handle(ActionEvent arg0) {
-					for(int i=0;i<gettingQuestionAnswers.getChildren().size();i++) 
+					for(int i=0;i<gettingQuestionAnswers.getChildren().size();i++)
 						gettingQuestionAnswers.getChildren().get(i).setVisible(false);
-					
-					
-					
+
+					tfwhatQuestion.setText("");
+					tfwhatAnswer.setText("");
+					tfanswer1.setText("");
+					tfanswer2.setText("");
+					tfanswer3.setText("");
+					tfanswer4.setText("");
+					tfanswer5.setText("");
+					tfanswer6.setText("");
+					tfanswer7.setText("");
+					tfanswer8.setText("");
 					lblwhatQuestion.setVisible(true);
 					tfwhatQuestion.setVisible(true);
 					lblwhatAnswer.setVisible(true);
 					tfwhatAnswer.setVisible(true);
 					btnSendNewQuestion.setVisible(true);
 					btnSendNewQuestion.setOnAction(new EventHandler<ActionEvent>() {
-						
+
 						@Override
 						public void handle(ActionEvent arg0) {
-							if(tfwhatQuestion.getText().isBlank()||tfwhatAnswer.getText().isBlank()) {
-								lblEmptyField2.setVisible(true);
-							} else {
-								lblEmptyField2.setVisible(false);
-							}
-							
+							lblEmptyField2.setVisible(tfwhatQuestion.getText().equals("") || tfwhatAnswer.getText().equals(""));
+							String verdict = Manager.addOpenEndToBank(tfwhatQuestion.getText(), tfwhatAnswer.getText());
+							lblVerdict.setText(verdict);
+							if(verdict.equals(SUCCESS_MESSAGE_01))
+								lblVerdict.setTextFill(Color.GREEN);
+							else
+								lblVerdict.setTextFill(Color.RED);
+							lblVerdict.setVisible(true);
+
+
 						}
 					});
-					
+
 				}
-				
+
 			});
 			Button btnMultiQuestion = new Button("multi-optional question");
 			Button btnSendUpdateQuestion = new Button("Send");
@@ -280,8 +295,17 @@ public class Main extends Application {
 				public void handle(ActionEvent arg0) {
 					for(int i=0;i<gettingQuestionAnswers.getChildren().size();i++) 
 						gettingQuestionAnswers.getChildren().get(i).setVisible(false);
-					
-					
+
+					tfwhatQuestion.setText("");
+					tfwhatAnswer.setText("");
+					tfanswer1.setText("");
+					tfanswer2.setText("");
+					tfanswer3.setText("");
+					tfanswer4.setText("");
+					tfanswer5.setText("");
+					tfanswer6.setText("");
+					tfanswer7.setText("");
+					tfanswer8.setText("");
 					lblwhatQuestion.setVisible(true);
 					tfwhatQuestion.setVisible(true);
 					lblanswer1.setVisible(true);
@@ -316,9 +340,9 @@ public class Main extends Application {
 					tfanswer8.setVisible(true);
 					lblIsTrue8.setVisible(true);
 					cbAnswer8.setVisible(true);
-					
-					
-				
+
+
+
 					
 					btnNewMultiOptions.setVisible(true);
 					btnNewMultiOptions.setOnAction(new EventHandler<ActionEvent>() {
@@ -327,12 +351,12 @@ public class Main extends Application {
 						public void handle(ActionEvent arg0) {
 							boolean AnswerFilled = false;
 							
-								if(tfanswer1.getText().isBlank()&&tfanswer2.getText().isBlank()&&tfanswer3.getText().isBlank()&&tfanswer4.getText().isBlank()&&tfanswer5.getText().isBlank()&&tfanswer6.getText().isBlank()&&tfanswer7.getText().isBlank()&&tfanswer8.getText().isBlank()) {
+								if(tfanswer1.getText().equals("")&&tfanswer2.getText().equals("")&&tfanswer3.getText().equals("")&&tfanswer4.getText().equals("")&&tfanswer5.getText().equals("")&&tfanswer6.getText().equals("")&&tfanswer7.getText().equals("")&&tfanswer8.getText().equals("")) {
 									AnswerFilled = false;
 								}else AnswerFilled=true;
 								
 							
-							if(tfwhatQuestion.getText().isBlank()||!(AnswerFilled)) {
+							if(tfwhatQuestion.getText().equals("")||!(AnswerFilled)) {
 								lblEmptyField2.setVisible(true);
 							}else {
 								lblEmptyField2.setVisible(false);
@@ -370,7 +394,7 @@ public class Main extends Application {
 				
 				@Override
 				public void handle(ActionEvent arg0) {
-					if(!(tfgetQuestionID.getText().isBlank())) {
+					if(!(tfgetQuestionID.getText().equals(""))) {
 						lblEmptyField3.setVisible(false);
 						lblUpdateQuestion.setVisible(true);
 						tfUpdateQuestion.setVisible(true);
@@ -388,12 +412,7 @@ public class Main extends Application {
 				
 				@Override
 				public void handle(ActionEvent arg0) {
-					if(!(tfUpdateQuestion.getText().isBlank())) {
-						lblEmptyField3_3.setVisible(false);
-					}else {
-						lblEmptyField3_3.setVisible(true);
-
-					}
+					lblEmptyField3_3.setVisible(tfUpdateQuestion.getText().equals(""));
 					
 				}
 			});
@@ -406,17 +425,17 @@ public class Main extends Application {
 			OpenWindow.setVisible(true);
 			Label lblWelcome = new Label("Welcome to the Test Maker!");
 			lblWelcome.setVisible(true);
-			
+
 			lblWelcome.setStyle("-fx-font-size: 2.0em;");
 			Label lblMadeBy = new Label("made by Guy Zvilich and Dimitry Gordon");
 			lblMadeBy.setVisible(true);
 			Label lblWhatIsHere = new Label(" - You can look at our question bank. \n - You can create your own questions and add them to our bank. \n - You can update a qustion/answer as you like or even remove an answer. \n -  You can create your own managed quiz and if you feel lazy you can create quiz randomly! \n - You Can copy a quiz from one that is already exist!");
 			OpenWindow.add(lblWelcome,3,1);
 			OpenWindow.add(lblWhatIsHere,3,6);
-			
+
 			OpenWindow.add(lblMadeBy,1,10);
 			lblMadeBy.setPadding(new Insets(10));
-			
+
 			GridPane UpdateAnswer = new GridPane();
 			Label lblGetQuestionIDForAnswer = new Label("What is the ID of the question you'd like to update?");
 			TextField tfGetQuestionIDForAnswer = new TextField();
@@ -439,11 +458,7 @@ public class Main extends Application {
 				
 				@Override
 				public void handle(ActionEvent arg0) {
-					if(tfGetQuestionIDForAnswer.getText().isBlank()) {
-						lblEmptyField4.setVisible(true);
-					}else {
-						lblEmptyField4.setVisible(false);
-					}
+					lblEmptyField4.setVisible(tfGetQuestionIDForAnswer.getText().equals(""));
 				}
 			});
 			
@@ -467,10 +482,14 @@ public class Main extends Application {
 			ScrollPane RandomQuiz= new ScrollPane();
 			RandomQuiz.setVisible(false);
 			RandomQuiz.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-			
+
+			ScrollPane copyQuizPresenter = new ScrollPane();
+			copyQuizPresenter.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+
 			BorderPane CopyQuiz = new BorderPane();
 			Button btnByDate = new Button("By Date");
 			Button btnByLast10 = new Button("By Last 10");
+			Label warning = new Label("No Exam was created yet. The clone bank of exams is empty");
 			HBox hbCopyOptions = new HBox();
 			CopyQuiz.setPadding(new Insets(10));
 			hbCopyOptions.getChildren().addAll(btnByDate,btnByLast10);
@@ -504,7 +523,39 @@ public class Main extends Application {
 			btnByDate.setAlignment(Pos.CENTER);
 			ByLast10.setHgap(10);
 			ByLast10.setVgap(10);
-			
+			ByLast10.add(warning,1,1);
+
+			btnCopyByDate.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					String date = tfGetDay.getText() + "/" +tfGetMonth.getText() + "/" + tfGetYear.getText();
+					Label Quiz = new Label(Manager.copyQuizFromFileToWindow(date));
+					copyQuizPresenter.setContent(Quiz);
+					copyQuizPresenter.setVisible(true);
+				}
+			});
+
+			btnCopyByLast10.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					int index=0;
+					VBox node = (VBox) ByLast10.getChildren().get(1);
+					for(Node child: node.getChildren()){
+						RadioButton radioButton = (RadioButton) child;
+						if(radioButton.isSelected())
+							index = Integer.parseInt(radioButton.getText()) -1;
+					}
+					Quiz copyQuiz = lastCreatedQuizBank.get(index);
+					String test = null;
+					if (copyQuiz != null) {
+						test = copyQuiz.toString();
+						Manager.quizCopyFile(copyQuiz);
+					}
+					Label Quiz = new Label(test);
+					copyQuizPresenter.setContent(Quiz);
+					copyQuizPresenter.setVisible(true);
+				}
+			});
 			
 			StackPane copyOption = new StackPane(copyByDate,copyByLast10);
 			CopyQuiz.setCenter(copyOption);
@@ -530,14 +581,19 @@ public class Main extends Application {
 					for(int i =0;i<copyOption.getChildren().size();i++) {
 						copyOption.getChildren().get(i).setVisible(false);
 					}
+					ByLast10.getChildren().removeAll();
 					ToggleGroup tglLast10Quiezes = new ToggleGroup();
 					VBox vb10Options = new VBox();
 					vb10Options.setSpacing(5);
-					for (int i=1;i<11;i++) {
+					int sizeOfBank = lastCreatedQuizBank.size();
+					if(sizeOfBank == 0) {
+						warning.setVisible(true);
+					}
+					for (int i=1;i<sizeOfBank+1;i++) {
 						RadioButton temp = new RadioButton(i+"");
 						temp.setToggleGroup(tglLast10Quiezes);
 						vb10Options.getChildren().add(temp);
-						}
+					}
 					ByLast10.add(vb10Options, 1, 1);
 					copyByLast10.setVisible(true);
 				}
@@ -557,7 +613,25 @@ public class Main extends Application {
 			Label lblGetQuestionIDToRemove = new Label("What is the ID of the question you'd like to update?");
 			TextField tfGetQuestionIDToRemove = new TextField();
 			Button btnGetQuestionIDToRemove = new Button("Get");
-			
+
+			btnGenerateUserManaged.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					StringBuffer stringBuffer = new StringBuffer();
+					VBox vBox = (VBox) fp.getChildren().get(0);
+					for(Node row: vBox.getChildren()){
+						HBox hBox = (HBox) row;
+						for(Node item: hBox.getChildren()){
+							if(((CheckBox) item).isSelected()){
+								stringBuffer.append(((CheckBox) item).getText()).append(",");
+							}
+						}
+					}
+					String s = stringBuffer.toString().replaceAll("Question ", "");
+					s.substring(0, s.length() - 1);
+				}
+			});
+
 			RemoveAnswer.add(lblGetQuestionIDToRemove, 1, 1);
 			RemoveAnswer.add(tfGetQuestionIDToRemove, 2, 1);
 			RemoveAnswer.add(btnGetQuestionIDToRemove, 3, 1);
@@ -570,11 +644,7 @@ public class Main extends Application {
 				
 				@Override
 				public void handle(ActionEvent arg0) {
-					if(tfGetQuestionIDToRemove.getText().isBlank()) {
-						lblEmptyField5.setVisible(true);
-					}else {
-						lblEmptyField5.setVisible(false);
-					}
+					lblEmptyField5.setVisible(tfGetQuestionIDToRemove.getText().equals(""));
 				}
 			});
 			
@@ -599,7 +669,7 @@ public class Main extends Application {
 			fp.setHgap(10);
 			fp.setVgap(10);
 			root.setTop(hbRootbuttons);
-			root2.getChildren().addAll(OpenWindow,userManaged,QuestionBank,addQuestion,UpdateQuestion,UpdateAnswer,RemoveAnswer,HowManyRandom,CopyQuiz,RandomQuiz);
+			root2.getChildren().addAll(OpenWindow,userManaged,QuestionBank,addQuestion,UpdateQuestion,UpdateAnswer,RemoveAnswer,HowManyRandom,CopyQuiz,RandomQuiz, copyQuizPresenter);
 			btn1.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
@@ -610,9 +680,9 @@ public class Main extends Application {
 					QuestionBank.setVisible(true);
 					Label bank = new Label(Manager.showQuestionBank());
 					QuestionBank.setContent(bank);
-					
+
 				}
-				
+
 			});
 			
 			btn2.setOnAction(new EventHandler<ActionEvent>(){
@@ -622,6 +692,16 @@ public class Main extends Application {
 					for (int i =0;i<root2.getChildren().size();i++) {
 						root2.getChildren().get(i).setVisible(false);
 					}
+					tfwhatQuestion.setText("");
+					tfwhatAnswer.setText("");
+					tfanswer1.setText("");
+					tfanswer2.setText("");
+					tfanswer3.setText("");
+					tfanswer4.setText("");
+					tfanswer5.setText("");
+					tfanswer6.setText("");
+					tfanswer7.setText("");
+					tfanswer8.setText("");
 					addQuestion.setVisible(true);
 					
 				}
@@ -704,7 +784,7 @@ public class Main extends Application {
 						
 						@Override
 						public void handle(ActionEvent arg0) {
-							if(tfGetQuizSize.getText().isBlank()) {
+							if(tfGetQuizSize.getText().equals("")) {
 								lblEmptyField7.setVisible(true);
 							} else {
 								lblEmptyField7.setVisible(false);
@@ -729,6 +809,7 @@ public class Main extends Application {
 					for (int i =0;i<root2.getChildren().size();i++) {
 						root2.getChildren().get(i).setVisible(false);
 					}
+					warning.setVisible(false);
 					CopyQuiz.setVisible(true);
 					
 				}

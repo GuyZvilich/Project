@@ -257,6 +257,25 @@ public class Manager {
         }
     }
 
+    public static String copyQuizFromFileToWindow(String dateString) {
+        try {
+            readQuizFromFile(dateString);
+            String[] dateParts = dateString.split("/");
+            String examFilepath = "Quizzes/exam_" + dateParts[2] + "_" + String.format("%02d", Integer.parseInt(dateParts[1])) + "_" + dateParts[0];
+            File examFile = new File(examFilepath);
+            Scanner examReader = new Scanner(examFile);
+            StringBuffer sb = new StringBuffer();
+            while (examReader.hasNext()) {
+                sb.append(examReader.nextLine()).append("\n");
+            }
+            examReader.close();
+            return sb.toString();
+
+        } catch (FileNotFoundException e) {
+            return ERROR_011;
+        }
+    }
+
     public static void quizCopyFile(Quiz quiz) {
         LocalDateTime date = LocalDateTime.now();
         String examFilepath = "Quizzes/exam_" + date.getYear() + "_" + String.format("%02d", date.getMonthValue()) + "_" + String.format("%02d", date.getDayOfMonth()) + "_copy";
@@ -313,6 +332,19 @@ public class Manager {
         } else {
             questionBank.add(length, question);
         }
+    }
+
+    public static String addOpenEndToBank(String text, String answer) {
+        OpenEndQuestion question = new OpenEndQuestion(text, answer);
+        if (Manager.isQuestionNotExists(questionBank, question)) {
+            questionAdder(questionBank, question);
+            return SUCCESS_MESSAGE_01;
+        } else
+            return ERROR_012;
+    }
+
+    public static void addMultiChoiceToBank() {
+
     }
 
     public static void addQuestionToBank(int num) {
@@ -422,17 +454,17 @@ public class Manager {
         }
     }
 
-    private static void rotatingQuizBank(Quiz quiz){
-        if(lastCreatedQuizBank.size() > 10){
+    private static void rotatingQuizBank(Quiz quiz) {
+        if (lastCreatedQuizBank.size() > 10) {
             lastCreatedQuizBank.remove(0);
         }
         lastCreatedQuizBank.add(quiz);
     }
 
     public static String showQuestionBank() {
-    	StringBuffer quests = new StringBuffer();
+        StringBuffer quests = new StringBuffer();
         for (Question question : questionBank)
-        	quests.append(question == null ? "" : question + "\n\n");
+            quests.append(question == null ? "" : question + "\n\n");
         return quests.toString();
     }
 
