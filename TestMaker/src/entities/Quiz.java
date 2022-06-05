@@ -75,6 +75,10 @@ public class Quiz implements Cloneable{
         this.questions = list;
     }
 
+    public Quiz(ArrayList<Question> questions){
+        this.questions = questions;
+    }
+
     @Override
     protected Quiz clone() throws CloneNotSupportedException {
         ArrayList<Question> ques = new ArrayList<>();

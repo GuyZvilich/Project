@@ -55,8 +55,6 @@ public class Set<T> implements Serializable {
         this.lastIndex = this.lastIndex -1;
     }
 
-
-
     private boolean doesObjectNotExist(T type) {
         for (T obj : this.set) {
             if (type.equals(obj)) {

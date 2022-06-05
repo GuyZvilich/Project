@@ -21,6 +21,8 @@ public class Manager {
 
     public static ArrayList<Quiz> lastCreatedQuizBank = new ArrayList<>();
 
+    private static ArrayList<Question> windowQuestionsToQuiz = new ArrayList<>();
+
     /*public static ArrayList<Question> getQuestionBank() {
         Set<MultipleChoiceOption> set1 = new Set<>(MultipleChoiceOption.class);
         set1.add(new MultipleChoiceOption("2015", false));
@@ -184,6 +186,10 @@ public class Manager {
                 new MultipleChoiceQuestion("What is the average weight of the human brain?",set20)));
     }*/
 
+    public static ArrayList<Question> questionBankProvider(){
+        return questionBank;
+    }
+
     public static ArrayList<Question> getQuestionBank() {
         try {
 
@@ -207,6 +213,14 @@ public class Manager {
 
     public static int questionBankSize() {
         return questionBank.size();
+    }
+
+    public static void windowAddQuestion(Question q){
+        windowQuestionsToQuiz.add(q);
+    }
+
+    public static void clearWindowQuestions(){
+        windowQuestionsToQuiz.clear();
     }
 
     public static void saveQuestionBank() {
@@ -319,6 +333,10 @@ public class Manager {
         return quiz;
     }
 
+    public static Quiz createManagedWindowQuiz(){
+        return new Quiz(windowQuestionsToQuiz);
+    }
+
 
     public static void questionAdder(ArrayList<Question> questionBank, Question question) {
         int length = questionBank.size();
@@ -343,8 +361,23 @@ public class Manager {
             return ERROR_012;
     }
 
-    public static void addMultiChoiceToBank() {
+    public static String addMultiChoiceToBank(String text, Set<MultipleChoiceOption> set) {
+        MultipleChoiceQuestion question = new MultipleChoiceQuestion(text, set);
+        if (Manager.isQuestionNotExists(questionBank, question)) {
+            questionAdder(questionBank, question);
+            return SUCCESS_MESSAGE_01;
+        } else
+            return ERROR_012;
+    }
 
+    public static ArrayList<Question> getQuestionsPerList(String listGiven){
+        String ids = listGiven.replaceAll("Question ", "").substring(0, listGiven.length() - 1);
+        String[] list = ids.split(",");
+        ArrayList<Question> arrayList = new ArrayList<>();
+        for (String index: list) {
+            arrayList.add(questionBank.get(Integer.parseInt(index)));
+        }
+        return arrayList;
     }
 
     public static void addQuestionToBank(int num) {
@@ -498,6 +531,14 @@ public class Manager {
         }
     }
 
+    public static String removeAnswerInWindow(int num, int opt){
+        if(((MultipleChoiceQuestion) questionBank.get(num-1)).getOptions().getSize() > 1){
+            ((MultipleChoiceQuestion) questionBank.get(num-1)).getOptions().remove(opt, MultipleChoiceOption.class);
+            return SUCCESS_MESSAGE_04;
+        }
+        return "Number of answer available options is one.\nNo more option removal is permitted";
+    }
+
     public static void updateQuestionText(int num) {
         for (Question question : questionBank) {
             if (question.getQuestionId() == num) {
@@ -506,6 +547,11 @@ public class Manager {
                 break;
             }
         }
+    }
+
+    public static String updateQuestionTextInWindow(int num, String text){
+        questionBank.get(num).setText(text);
+        return SUCCESS_MESSAGE_04;
     }
 
     public static void updateQuestionAnswer(int num) {
@@ -549,6 +595,17 @@ public class Manager {
         }
     }
 
+    public static String updateQuestionAnswerInWindow(int num, int opt, String text){
+        Question question = questionBank.get(num-1);
+        if(opt == 0){
+            ((OpenEndQuestion) question).setRightAnswer(text);
+        }
+        else {
+            ((MultipleChoiceQuestion) question).getOptions().get(opt-1).setOptionText(text);
+        }
+        return SUCCESS_MESSAGE_04;
+    }
+
     public static void validationMessenger(int numOfQuestions) {
         if (numOfQuestions == 0) {
             System.out.println(ERROR_003);
@@ -571,6 +628,21 @@ public class Manager {
 
     public static void printToConsole(String text) {
         System.out.println(text);
+    }
+
+
+    public static int getIdByText(int num, String text){
+        Set<MultipleChoiceOption> mcos = ((MultipleChoiceQuestion) questionBank.get(num -1)).getOptions();
+        int index= 0;
+        for(MultipleChoiceOption choice: mcos.getSet()){
+            index ++;
+            if(choice != null){
+                if(choice.getOptionText().equals(text)){
+                    return index;
+                }
+            }
+        }
+        return index;
     }
 
 }

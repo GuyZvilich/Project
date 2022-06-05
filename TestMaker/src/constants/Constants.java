@@ -37,8 +37,10 @@ public class Constants {
     public static final String QUESTION_TO_USER_01 = "What is the new/updated text of the question?";
     public static final String QUESTION_TO_USER_02 = "What is the question?";
     public static final String QUESTION_TO_USER_03 = "What is the right answer for the question?";
+    public static final String QUESTION_TO_USER_03_2 = "Is this answer correct?";
     public static final String QUESTION_TO_USER_04 = "What is the new/updated correct answer for the question?";
     public static final String QUESTION_TO_USER_05 = "What is the new/updated option for the question?";
+    public static final String QUESTION_TO_USER_05_5 = "What is the new/updated answer for the question?";
     public static final String QUESTION_TO_USER_06 = "Which would you like to do?\n1 - Update existing options wording\n2 - Add a new option to the list";
     public static final String QUESTION_TO_USER_07 = "Which of the last 10 quizzes you'd like to have a copy of?\nProvide the index in reverse order (i.e. 0 is the oldest quiz 10 is the most resent)";
     public static final String QUESTION_TO_USER_08 = "What is the ID of the question you'd like to update?";
@@ -54,12 +56,17 @@ public class Constants {
     public static final String QUESTION_TO_USER_20 = "What is the creation date of the Quiz you'd like to make a copy of?";
 
     public static final String EXIT_MESSAGE = "Wrong option";
+    public static final String UPDATE = "Update";
+    public static final String REMOVE = "Remove";
 
     public static String initialOptions(int num){
         return "Please fill the " + (num - 2) + " initial options";
     }
     public static String provideOption(int i){
         return "Please provide option #" + (i + 1);
+    }
+    public static String answerNumberX(int x){
+        return "Answer " + x + ":";
     }
 
     public static final String MENU_OPTION_1 = "Display question bank";
