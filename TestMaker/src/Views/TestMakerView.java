@@ -10,12 +10,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static entities.Manager.clearWindowQuestions;
@@ -39,19 +44,36 @@ public class TestMakerView implements AbstractView {
 
     public TestMakerView(Stage theStage) {
         BorderPane root = new BorderPane();
-        Button btnHome = new Button("Home");
+        root.setStyle("-fx-background-color: #98AFC7");
+        
+        ImageView homeImage = new ImageView("file:///C:/Users/guzyv/git/TestMakerJFX/TestMaker/src/pictures/home.png");
+        homeImage.setFitHeight(17);
+        homeImage.setFitWidth(17);
+        Button btnHome = new Button("",homeImage);
+        btnHome.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnHome.setGraphic(homeImage);
         Button btn1 = new Button("Question Bank");
+        btn1.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+
         Button btn2 = new Button("Add a question");
+        btn2.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         Button btn3 = new Button("Update Question");
+        btn3.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         Button btn4 = new Button("Update answer");
+        btn4.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         Button btn5 = new Button("Remove an answer");
+        btn5.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         Button btn6 = new Button("Create user managed quiz");
+        btn6.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         Button btn7 = new Button("Create random quiz");
+        btn7.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         Button btn8 = new Button("Copy quiz");
+        btn8.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         HBox hbRootbuttons = new HBox();
         hbRootbuttons.setAlignment(Pos.CENTER);
         hbRootbuttons.setPadding(new Insets(10));
         hbRootbuttons.getChildren().addAll(btnHome, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8);
+        hbRootbuttons.setSpacing(3);
         root.setTop(hbRootbuttons);
         root2.getChildren().addAll(homeView.getHome(), questionBankView.getQuestionBank(), addQuestion.getBPaddQuestion(), updateQuestion.getGPupdateQuestion(), updateAnswer.getGPupdateAnswer(), removeAnswer.getGPremoveAnswer(), randomQuiz.getRandomQuiz(), randomQuiz.getQuizPresenter(), copyQuiz.getCopyQuiz(), copyQuiz.getCopyQuizPresenter(), managedQuiz.getUserManaged(), managedQuiz.getManagedQuizPresenter());
 
@@ -61,6 +83,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showHome();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btnHome.setStyle("-fx-background-color: #227391;");
             }
         });
         btn1.setOnAction(new EventHandler<ActionEvent>() {
@@ -69,7 +95,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showQuestionBank();
-
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn1.setStyle("-fx-background-color: #227391;");
             }
 
         });
@@ -79,6 +108,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showAddQuestion();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn2.setStyle("-fx-background-color: #227391;");
 
             }
 
@@ -89,7 +122,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showUpdateQuestion();
-
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn3.setStyle("-fx-background-color: #227391;");
             }
 
         });
@@ -99,6 +135,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showUpdateAnswer();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn4.setStyle("-fx-background-color: #227391;");
             }
 
         });
@@ -108,6 +148,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showRemoveAnswer();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn5.setStyle("-fx-background-color: #227391;");
             }
 
         });
@@ -117,6 +161,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showManagedQuiz();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn6.setStyle("-fx-background-color: #227391;");
             }
 
         });
@@ -126,6 +174,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showRandomQuiz();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn7.setStyle("-fx-background-color: #227391;");
             }
 
         });
@@ -135,6 +187,10 @@ public class TestMakerView implements AbstractView {
             public void handle(ActionEvent arg0) {
                 for (UIEventListener l : allListeners)
                     l.showCopyQuiz();
+                for(int i=0;i<hbRootbuttons.getChildren().size();i++) 
+                	hbRootbuttons.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                
+                btn8.setStyle("-fx-background-color: #227391;");
 
             }
 
@@ -142,7 +198,7 @@ public class TestMakerView implements AbstractView {
 
         root.setCenter(root2);
         Scene scene = new Scene(root, 1000, 600);
-        scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
         theStage.setScene(scene);
         theStage.show();
     }
@@ -163,6 +219,7 @@ public class TestMakerView implements AbstractView {
         refreshRoot();
         questionBankView.getQuestionBank().setVisible(true);
         Label bank = new Label(Manager.showQuestionBank());
+        bank.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
         questionBankView.getQuestionBank().setContent(bank);
     }
 

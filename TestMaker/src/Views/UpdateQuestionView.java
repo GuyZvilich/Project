@@ -44,7 +44,14 @@ public class UpdateQuestionView {
     }
 
     public UpdateQuestionView() {
-        UpdateQuestion.setPadding(new Insets(10));
+    	UpdateQuestion.setStyle("-fx-background-color: #AFDCEC	");
+    	btnSendQuestionID.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	btnSendUpdateQuestion.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	lblgetQuestionID.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblThisIsTheQuestion.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	questionText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblUpdateQuestion.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	UpdateQuestion.setPadding(new Insets(10));
         UpdateQuestion.setVgap(10);
         UpdateQuestion.setHgap(10);
         UpdateQuestion.add(lblgetQuestionID, 1, 1);

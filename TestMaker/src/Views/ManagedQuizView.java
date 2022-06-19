@@ -33,7 +33,16 @@ public class ManagedQuizView {
     }
 
     public ManagedQuizView() {
-        Button btnGetQuestion = new Button("Get");
+    	questionState.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	btnGenerate.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	btnSendQuestionOn.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	userManaged.setStyle("-fx-background-color: #AFDCEC	");
+    	managedQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
+    	
+    	
+    	Button btnGetQuestion = new Button("Get");
+    	btnGetQuestion.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        
 
         btnGetQuestion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -63,6 +72,7 @@ public class ManagedQuizView {
                 if (!questionState.isVisible()) {
                     Question question = questionBankProvider().get(Integer.parseInt(index) - 1);
                     Label questionText = new Label("Question: " + question.getText());
+                    questionText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
                     if (question instanceof OpenEndQuestion) {
                         questionWording.add(questionText, 1, 1);
                         questionWording.add(new Label("Answer: " + ((OpenEndQuestion) question).getRightAnswer()), 1, 2);
@@ -125,6 +135,7 @@ public class ManagedQuizView {
             @Override
             public void handle(ActionEvent event) {
                 Label Quiz = new Label(createManagedWindowQuiz().toString());
+                Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
                 managedQuizPresenter.setContent(Quiz);
                 managedQuizPresenter.setVisible(true);
             }

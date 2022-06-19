@@ -38,7 +38,10 @@ public class RemoveAnswerView {
     }
 
     public RemoveAnswerView() {
-        RemoveAnswer.setPadding(new Insets(10));
+    	RemoveAnswer.setStyle("-fx-background-color: #AFDCEC	");
+    	btnGetQuestionIDToRemove.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	lblGetQuestionIDToRemove.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	RemoveAnswer.setPadding(new Insets(10));
         RemoveAnswer.setHgap(10);
         RemoveAnswer.setVgap(10);
         RemoveAnswer.add(lblGetQuestionIDToRemove, 1, 1);
@@ -59,7 +62,9 @@ public class RemoveAnswerView {
                 ToggleGroup tglOptions = new ToggleGroup();
                 Label successLabel = new Label();
                 Label lblText = new Label();
+                lblText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
                 Button sendRemoveButton = new Button(REMOVE);
+                sendRemoveButton.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
                 sendRemoveButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {

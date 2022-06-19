@@ -40,7 +40,10 @@ public class UpdateAnswerView {
     }
 
     public UpdateAnswerView() {
-        UpdateAnswer.setPadding(new Insets(10));
+    	UpdateAnswer.setStyle("-fx-background-color: #AFDCEC	");
+    	btnGetQuestionIDForAnswer.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	lblGetQuestionIDForAnswer.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	UpdateAnswer.setPadding(new Insets(10));
         UpdateAnswer.setVgap(10);
         UpdateAnswer.setHgap(10);
         UpdateAnswer.add(lblGetQuestionIDForAnswer, 1, 1);
@@ -65,6 +68,7 @@ public class UpdateAnswerView {
                 TextField textFieldAnswer = new TextField();
                 Label successLabel = new Label();
                 Button sendButton = new Button(UPDATE);
+                sendButton.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
                 sendButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {

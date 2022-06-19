@@ -30,7 +30,11 @@ public class RandomQuizView {
     }
 
     public RandomQuizView() {
-        Label lblRandomQuiz = new Label(QUESTION_TO_USER_09);
+       RandomQuiz.setStyle("-fx-background-color: #AFDCEC	");
+       RandomQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
+       btnGenerateQuiz.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	Label lblRandomQuiz = new Label(QUESTION_TO_USER_09);
+    	lblRandomQuiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
 
         RandomQuiz.setPadding(new Insets(10));
         RandomQuiz.setHgap(10);
@@ -63,6 +67,7 @@ public class RandomQuizView {
                     lblEmptyField7.setVisible(false);
                     RandomQuiz.setVisible(false);
                     Label Quiz = new Label(Manager.createRandomQuiz(Integer.parseInt(tfGetQuizSize.getText())).toString());
+                    Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
                     RandomQuizPresenter.setContent(Quiz);
                     RandomQuizPresenter.setVisible(true);
                 }

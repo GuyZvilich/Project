@@ -63,6 +63,8 @@ public class AddQuestionView {
     private Label lblVerdict = new Label();
     private Button btnSendNewQuestion = new Button(UPDATE);
     private Button btnNewMultiOptions = new Button(UPDATE);
+    private Button btnMultiQuestion = new Button("multi-optional question");
+    private Button btnOpenQuestion = new Button("Open end question");
 
     public BorderPane getBPaddQuestion() {
         return this.addQuestion;
@@ -125,13 +127,36 @@ public class AddQuestionView {
     }
 
     public AddQuestionView() {
+    	addQuestion.setStyle("-fx-background-color: #AFDCEC	");
+    	lblwhatQuestion.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblwhatAnswer.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer1.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer2.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer3.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer4.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer5.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer6.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer7.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblanswer8.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue1.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue2.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue3.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue4.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue5.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue6.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue7.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblIsTrue8.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblVerdict.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
         addQuestion.setVisible(false);
         addQuestion.setPadding(new Insets(10));
-        Button btnOpenQuestion = new Button("Open end question");
-        Button btnMultiQuestion = new Button("multi-optional question");
+        
+        btnOpenQuestion.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        
+        btnMultiQuestion.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         HBox typeQuestion = new HBox();
         typeQuestion.setPadding(new Insets(10));
         typeQuestion.getChildren().addAll(btnOpenQuestion, btnMultiQuestion);
+        typeQuestion.setSpacing(3);
         addQuestion.setTop(typeQuestion);
         BorderPane gettingQuestionMulti = new BorderPane();
         addQuestion.setTop(typeQuestion);
@@ -140,7 +165,9 @@ public class AddQuestionView {
         gettingQuestionMulti.setCenter(gettingQuestionAnswers);
         gettingQuestionAnswers.setVgap(10);
         gettingQuestionAnswers.setHgap(10);
+        btnSendNewQuestion.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         btnSendNewQuestion.setVisible(false);
+        btnNewMultiOptions.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
         btnNewMultiOptions.setVisible(false);
         Label lblEmptyField2 = new Label("One of the required fields are empty");
         lblEmptyField2.setVisible(false);
@@ -201,7 +228,9 @@ public class AddQuestionView {
             public void handle(ActionEvent arg0) {
                 for (int i = 0; i < gettingQuestionAnswers.getChildren().size(); i++)
                     gettingQuestionAnswers.getChildren().get(i).setVisible(false);
-
+                for(int i=0;i<typeQuestion.getChildren().size();i++)
+                	typeQuestion.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                btnOpenQuestion.setStyle("-fx-background-color: #227391;");
                 textClear();
                 lblwhatQuestion.setVisible(true);
                 tfwhatQuestion.setVisible(true);
@@ -235,7 +264,9 @@ public class AddQuestionView {
             public void handle(ActionEvent arg0) {
                 for (int i = 0; i < gettingQuestionAnswers.getChildren().size(); i++)
                     gettingQuestionAnswers.getChildren().get(i).setVisible(false);
-
+                for(int i=0;i<typeQuestion.getChildren().size();i++)
+                	typeQuestion.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                btnMultiQuestion.setStyle("-fx-background-color: #227391;");
                 textClear();
                 lblwhatQuestion.setVisible(true);
                 tfwhatQuestion.setVisible(true);
