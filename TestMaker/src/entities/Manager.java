@@ -7,6 +7,9 @@ import entities.questions.Question;
 import main.Main;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -643,6 +646,30 @@ public class Manager {
             }
         }
         return index;
+    }
+
+    public static boolean isNumeric(String str){
+        int intValue;
+        if(str == null || str.equals("")) {
+            return false;
+        }
+        try {
+            intValue = Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isValid(String dateStr) {
+        DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+        try {
+            sdf.parse(dateStr);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
 }

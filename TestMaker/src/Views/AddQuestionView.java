@@ -242,15 +242,15 @@ public class AddQuestionView {
                     @Override
                     public void handle(ActionEvent arg0) {
                         lblEmptyField2.setVisible(tfwhatQuestion.getText().equals("") || tfwhatAnswer.getText().equals(""));
-                        String verdict = Manager.addOpenEndToBank(tfwhatQuestion.getText(), tfwhatAnswer.getText());
-                        lblVerdict.setText(verdict);
-                        if (verdict.equals(SUCCESS_MESSAGE_01))
-                            lblVerdict.setTextFill(Color.GREEN);
-                        else
-                            lblVerdict.setTextFill(Color.RED);
-                        lblVerdict.setVisible(true);
-
-
+                        if(!(tfwhatQuestion.getText().equals("") || tfwhatAnswer.getText().equals(""))){
+                            String verdict = Manager.addOpenEndToBank(tfwhatQuestion.getText(), tfwhatAnswer.getText());
+                            lblVerdict.setText(verdict);
+                            if (verdict.equals(SUCCESS_MESSAGE_01))
+                                lblVerdict.setTextFill(Color.GREEN);
+                            else
+                                lblVerdict.setTextFill(Color.RED);
+                            lblVerdict.setVisible(true);
+                        }
                     }
                 });
 
@@ -282,69 +282,70 @@ public class AddQuestionView {
                         AnswerFilled = !tfanswer1.getText().equals("") || !tfanswer2.getText().equals("") || !tfanswer3.getText().equals("") || !tfanswer4.getText().equals("") || !tfanswer5.getText().equals("") || !tfanswer6.getText().equals("") || !tfanswer7.getText().equals("") || !tfanswer8.getText().equals("");
                         lblEmptyField2.setVisible(tfwhatQuestion.getText().equals("") || !(AnswerFilled));
 
-                        Set<MultipleChoiceOption> set = new Set<>(MultipleChoiceOption.class);
 
-                        MultipleChoiceOption choice1;
-                        if (!tfanswer1.getText().equals("")) {
-                            choice1 = new MultipleChoiceOption(tfanswer1.getText(), cbAnswer1.isSelected());
-                            set.add(choice1);
+                        if(!tfwhatQuestion.getText().equals("") && AnswerFilled){
+                            Set<MultipleChoiceOption> set = new Set<>(MultipleChoiceOption.class);
+
+                            MultipleChoiceOption choice1;
+                            if (!tfanswer1.getText().equals("")) {
+                                choice1 = new MultipleChoiceOption(tfanswer1.getText(), cbAnswer1.isSelected());
+                                set.add(choice1);
+                            }
+
+                            MultipleChoiceOption choice2;
+                            if (!tfanswer2.getText().equals("")) {
+                                choice2 = new MultipleChoiceOption(tfanswer2.getText(), cbAnswer2.isSelected());
+                                set.add(choice2);
+                            }
+
+                            MultipleChoiceOption choice3;
+                            if (!tfanswer3.getText().equals("")) {
+                                choice3 = new MultipleChoiceOption(tfanswer3.getText(), cbAnswer3.isSelected());
+                                set.add(choice3);
+
+                            }
+
+                            MultipleChoiceOption choice4;
+                            if (!tfanswer4.getText().equals("")) {
+                                choice4 = new MultipleChoiceOption(tfanswer4.getText(), cbAnswer4.isSelected());
+                                set.add(choice4);
+                            }
+
+                            MultipleChoiceOption choice5;
+                            if (!tfanswer5.getText().equals("")) {
+                                choice5 = new MultipleChoiceOption(tfanswer5.getText(), cbAnswer5.isSelected());
+                                set.add(choice5);
+                            }
+
+                            MultipleChoiceOption choice6;
+                            if (!tfanswer6.getText().equals("")) {
+                                choice6 = new MultipleChoiceOption(tfanswer6.getText(), cbAnswer6.isSelected());
+                                set.add(choice6);
+                            }
+
+                            MultipleChoiceOption choice7;
+                            if (!tfanswer7.getText().equals("")) {
+                                choice7 = new MultipleChoiceOption(tfanswer7.getText(), cbAnswer7.isSelected());
+                                set.add(choice7);
+                            }
+
+                            MultipleChoiceOption choice8;
+                            if (!tfanswer8.getText().equals("")) {
+                                choice8 = new MultipleChoiceOption(tfanswer8.getText(), cbAnswer8.isSelected());
+                                set.add(choice8);
+                            }
+
+                            set.add(new MultipleChoiceOption("More than one answer is correct", isMoreThanOneCorrect(set)));
+                            set.add(new MultipleChoiceOption("None of the above", isNoneCorrect(set)));
+
+                            String verdict = Manager.addMultiChoiceToBank(tfwhatQuestion.getText(), set);
+                            lblVerdict.setText(verdict);
+                            if (verdict.equals(SUCCESS_MESSAGE_01))
+                                lblVerdict.setTextFill(Color.GREEN);
+                            else
+                                lblVerdict.setTextFill(Color.RED);
+                            lblVerdict.setVisible(true);
                         }
-
-                        MultipleChoiceOption choice2;
-                        if (!tfanswer2.getText().equals("")) {
-                            choice2 = new MultipleChoiceOption(tfanswer2.getText(), cbAnswer2.isSelected());
-                            set.add(choice2);
-                        }
-
-                        MultipleChoiceOption choice3;
-                        if (!tfanswer3.getText().equals("")) {
-                            choice3 = new MultipleChoiceOption(tfanswer3.getText(), cbAnswer3.isSelected());
-                            set.add(choice3);
-
-                        }
-
-                        MultipleChoiceOption choice4;
-                        if (!tfanswer4.getText().equals("")) {
-                            choice4 = new MultipleChoiceOption(tfanswer4.getText(), cbAnswer4.isSelected());
-                            set.add(choice4);
-                        }
-
-                        MultipleChoiceOption choice5;
-                        if (!tfanswer5.getText().equals("")) {
-                            choice5 = new MultipleChoiceOption(tfanswer5.getText(), cbAnswer5.isSelected());
-                            set.add(choice5);
-                        }
-
-                        MultipleChoiceOption choice6;
-                        if (!tfanswer6.getText().equals("")) {
-                            choice6 = new MultipleChoiceOption(tfanswer6.getText(), cbAnswer6.isSelected());
-                            set.add(choice6);
-                        }
-
-                        MultipleChoiceOption choice7;
-                        if (!tfanswer7.getText().equals("")) {
-                            choice7 = new MultipleChoiceOption(tfanswer7.getText(), cbAnswer7.isSelected());
-                            set.add(choice7);
-                        }
-
-                        MultipleChoiceOption choice8;
-                        if (!tfanswer8.getText().equals("")) {
-                            choice8 = new MultipleChoiceOption(tfanswer8.getText(), cbAnswer8.isSelected());
-                            set.add(choice8);
-                        }
-
-                        set.add(new MultipleChoiceOption("More than one answer is correct", isMoreThanOneCorrect(set)));
-                        set.add(new MultipleChoiceOption("None of the above", isNoneCorrect(set)));
-
-                        String verdict = Manager.addMultiChoiceToBank(tfwhatQuestion.getText(), set);
-                        lblVerdict.setText(verdict);
-                        if (verdict.equals(SUCCESS_MESSAGE_01))
-                            lblVerdict.setTextFill(Color.GREEN);
-                        else
-                            lblVerdict.setTextFill(Color.RED);
-                        lblVerdict.setVisible(true);
-
-
                     }
                 });
 

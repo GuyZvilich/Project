@@ -29,6 +29,10 @@ public class RandomQuizView {
         return RandomQuizPresenter;
     }
 
+    public void reset(){
+        tfGetQuizSize.setText("");
+    }
+
     public RandomQuizView() {
        RandomQuiz.setStyle("-fx-background-color: #AFDCEC	");
        RandomQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
@@ -61,17 +65,18 @@ public class RandomQuizView {
 
             @Override
             public void handle(ActionEvent arg0) {
-                if (tfGetQuizSize.getText().equals("")) {
-                    lblEmptyField7.setVisible(true);
-                } else {
-                    lblEmptyField7.setVisible(false);
-                    RandomQuiz.setVisible(false);
-                    Label Quiz = new Label(Manager.createRandomQuiz(Integer.parseInt(tfGetQuizSize.getText())).toString());
-                    Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-                    RandomQuizPresenter.setContent(Quiz);
-                    RandomQuizPresenter.setVisible(true);
+                if(Manager.isNumeric(tfGetQuizSize.getText())){
+                    if (tfGetQuizSize.getText().equals("")) {
+                        lblEmptyField7.setVisible(true);
+                    } else {
+                        lblEmptyField7.setVisible(false);
+                        RandomQuiz.setVisible(false);
+                        Label Quiz = new Label(Manager.createRandomQuiz(Integer.parseInt(tfGetQuizSize.getText())).toString());
+                        Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                        RandomQuizPresenter.setContent(Quiz);
+                        RandomQuizPresenter.setVisible(true);
+                    }
                 }
-
             }
         });
     }

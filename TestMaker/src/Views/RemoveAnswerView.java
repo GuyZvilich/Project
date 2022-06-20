@@ -25,6 +25,8 @@ public class RemoveAnswerView {
     private Button btnGetQuestionIDToRemove = new Button("Get");
     private Label lblEmptyField5 = new Label("This field cannot be empty");
 
+    private String style = "-fx-text-fill: #191970;-fx-font-size: 1.1em;";
+
     public GridPane getGPremoveAnswer() {
         return this.RemoveAnswer;
     }
@@ -87,23 +89,26 @@ public class RemoveAnswerView {
                 }
                 lblEmptyField5.setVisible(tfGetQuestionIDToRemove.getText().equals(""));
                 if (!tfGetQuestionIDToRemove.getText().equals("")) {
-                    RemoveAnswer.add(lblText, 1, 3);
-                    Question quest = Manager.questionBankProvider().get(Integer.parseInt(tfGetQuestionIDToRemove.getText()) - 1);
-                    int i = 0;
-                    if (quest instanceof OpenEndQuestion) {
-                        lblText.setText("Open end question answers may not be removed");
-                    }
-                    if (quest instanceof MultipleChoiceQuestion) {
-                        lblText.setText("The question options available for removal:");
-                        for (; i < ((MultipleChoiceQuestion) quest).getOptions().getSize(); i++) {
-                            String optionText = ((MultipleChoiceQuestion) quest).getOptions().get(i).getOptionText();
-                            RadioButton temp = new RadioButton(optionText);
-                            temp.setToggleGroup(tglOptions);
-                            RemoveAnswer.add(temp, 1, i + 4);
+                    if(Manager.isNumeric(tfGetQuestionIDToRemove.getText())){
+                        RemoveAnswer.add(lblText, 1, 3);
+                        Question quest = Manager.questionBankProvider().get(Integer.parseInt(tfGetQuestionIDToRemove.getText()) - 1);
+                        int i = 0;
+                        if (quest instanceof OpenEndQuestion) {
+                            lblText.setText("Open end question answers may not be removed");
                         }
-                        RemoveAnswer.add(sendRemoveButton, 1, i + 5);
+                        if (quest instanceof MultipleChoiceQuestion) {
+                            lblText.setText("The question options available for removal:");
+                            for (; i < ((MultipleChoiceQuestion) quest).getOptions().getSize(); i++) {
+                                String optionText = ((MultipleChoiceQuestion) quest).getOptions().get(i).getOptionText();
+                                RadioButton temp = new RadioButton(optionText);
+                                temp.setToggleGroup(tglOptions);
+                                temp.setStyle(style);
+                                RemoveAnswer.add(temp, 1, i + 4);
+                            }
+                            RemoveAnswer.add(sendRemoveButton, 1, i + 5);
+                        }
+                        RemoveAnswer.add(successLabel, 1, i + 6);
                     }
-                    RemoveAnswer.add(successLabel, 1, i + 6);
                 }
             }
         });

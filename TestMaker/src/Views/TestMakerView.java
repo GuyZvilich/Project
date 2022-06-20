@@ -46,7 +46,7 @@ public class TestMakerView implements AbstractView {
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #98AFC7");
         
-        ImageView homeImage = new ImageView("file:///C:/Users/guzyv/git/TestMakerJFX/TestMaker/src/pictures/home.png");
+        ImageView homeImage = new ImageView("/pictures/home.png");
         homeImage.setFitHeight(17);
         homeImage.setFitWidth(17);
         Button btnHome = new Button("",homeImage);
@@ -269,6 +269,7 @@ public class TestMakerView implements AbstractView {
     public void showRandomQuizView() {
         refreshRoot();
         randomQuiz.getRandomQuiz().setVisible(true);
+        randomQuiz.reset();
         randomQuiz.genQuizButton();
     }
 
@@ -277,6 +278,7 @@ public class TestMakerView implements AbstractView {
         refreshRoot();
         copyQuiz.getWarning().setVisible(false);
         copyQuiz.getCopyQuiz().setVisible(true);
+        copyQuiz.reset();
     }
 
     private void refreshRoot() {

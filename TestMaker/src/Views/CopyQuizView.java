@@ -46,6 +46,13 @@ public class CopyQuizView {
         return warning;
     }
 
+    public void reset(){
+        lblGetDate.setVisible(false);
+        for(Node node: hbGetDate.getChildren())
+            node.setVisible(false);
+        ByLast10.setVisible(false);
+    }
+
     public CopyQuizView() {
     	CopyQuiz.setStyle("-fx-background-color: #AFDCEC	");
     	copyQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
@@ -61,7 +68,8 @@ public class CopyQuizView {
     	tfGetYear.setMaxHeight(30.0);
 
         hbGetDate.getChildren().addAll(tfGetDay, lblSlash1, tfGetMonth, lblSlash2, tfGetYear);
-        
+        Label lblIsValid = new Label();
+        lblIsValid.setVisible(false);
         copyByDate.setVisible(false);
        
         btnCopyByDate.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
@@ -77,6 +85,7 @@ public class CopyQuizView {
         ByDate.setVgap(10);
         ByDate.add(lblGetDate, 1, 1);
         ByDate.add(hbGetDate, 1, 2);
+        ByDate.add(lblIsValid, 1, 3);
         ByLast10.setHgap(10);
         ByLast10.setVgap(10);
         ByLast10.add(warning, 1, 1);
@@ -103,7 +112,12 @@ public class CopyQuizView {
                 copyByDate.setVisible(true);
                 for(int i=0;i<hbCopyOptions.getChildren().size();i++) 
                 	hbCopyOptions.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
-                
+                lblGetDate.setVisible(true);
+                tfGetDay.setVisible(true);
+                lblSlash1.setVisible(true);
+                tfGetMonth.setVisible(true);
+                lblSlash2.setVisible(true);
+                tfGetYear.setVisible(true);
                 btnByDate.setStyle("-fx-background-color: #227391;");
             }
         });
@@ -112,6 +126,7 @@ public class CopyQuizView {
 
             @Override
             public void handle(ActionEvent arg0) {
+                ByLast10.setVisible(true);
                 for (int i = 0; i < copyOption.getChildren().size(); i++) {
                     copyOption.getChildren().get(i).setVisible(false);
                 }
@@ -146,11 +161,22 @@ public class CopyQuizView {
         btnCopyByDate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String date = tfGetDay.getText() + "/" + tfGetMonth.getText() + "/" + tfGetYear.getText();
-                Label Quiz = new Label(Manager.copyQuizFromFileToWindow(date));
-                Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-                copyQuizPresenter.setContent(Quiz);
-                copyQuizPresenter.setVisible(true);
+                boolean status = Manager.isNumeric(tfGetDay.getText()) && Manager.isNumeric(tfGetMonth.getText()) && Manager.isNumeric(tfGetYear.getText());
+                boolean isValid;
+                if(status){
+                    String date = tfGetDay.getText() + "/" + tfGetMonth.getText() + "/" + tfGetYear.getText();
+                    isValid = Manager.isValid(date);
+                    if(isValid){
+                        Label Quiz = new Label(Manager.copyQuizFromFileToWindow(date));
+                        Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                        copyQuizPresenter.setContent(Quiz);
+                        copyQuizPresenter.setVisible(true);
+                    } else {
+                        lblIsValid.setText("The date is not valid");
+                        lblIsValid.setStyle("-fx-text-fill: red;-fx-font-size: 1.1em;");
+                        lblIsValid.setVisible(true);
+                    }
+                }
             }
         });
         btnCopyByLast10.setOnAction(new EventHandler<ActionEvent>() {

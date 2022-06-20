@@ -24,6 +24,8 @@ public class ManagedQuizView {
     private Button btnGenerate = new Button("Generate");
     private Button btnSendQuestionOn = new Button("Add To Quiz");
 
+    private String style = "-fx-text-fill: #191970;-fx-font-size: 1.1em;";
+
     public GridPane getUserManaged() {
         return userManaged;
     }
@@ -38,6 +40,7 @@ public class ManagedQuizView {
     	btnSendQuestionOn.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
     	userManaged.setStyle("-fx-background-color: #AFDCEC	");
     	managedQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
+        listOfQuestions.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
     	
     	
     	Button btnGetQuestion = new Button("Get");
@@ -75,15 +78,21 @@ public class ManagedQuizView {
                     questionText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
                     if (question instanceof OpenEndQuestion) {
                         questionWording.add(questionText, 1, 1);
-                        questionWording.add(new Label("Answer: " + ((OpenEndQuestion) question).getRightAnswer()), 1, 2);
+                        Label ans1 = new Label("Answer: " + ((OpenEndQuestion) question).getRightAnswer());
+                        ans1.setStyle(style);
+                        questionWording.add(ans1, 1, 2);
                     }
                     if (question instanceof MultipleChoiceQuestion) {
                         questionWording.add(questionText, 1, 1);
-                        questionWording.add(new Label("Answers:"), 1, 2);
+                        Label ans2 = new Label("Answers:");
+                        ans2.setStyle(style);
+                        questionWording.add(ans2, 1, 2);
                         int i = 3;
                         for (MultipleChoiceOption mco : ((MultipleChoiceQuestion) question).getOptions().getSet())
                             if (mco != null) {
-                                questionWording.add(new CheckBox(mco.getOptionText()), 1, i);
+                                CheckBox check = new CheckBox(mco.getOptionText());
+                                check.setStyle(style);
+                                questionWording.add(check, 1, i);
                                 i++;
                             }
                     }
@@ -127,7 +136,9 @@ public class ManagedQuizView {
                     if (node instanceof Label)
                         content = ((Label) node).getText();
                 }
-                listOfQuestions.setContent(new Label(content + "\nQuestion " + question.getQuestionId()));
+                Label lbl = new Label(content + "\nQuestion " + question.getQuestionId());
+                lbl.setStyle(style);
+                listOfQuestions.setContent(lbl);
 
             }
         });

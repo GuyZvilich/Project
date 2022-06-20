@@ -41,6 +41,7 @@ public class UpdateQuestionView {
         lblThisIsTheQuestion.setVisible(false);
         questionText.setVisible(false);
         UpdateQuestion.setVisible(true);
+        successOfUpdate.setVisible(false);
     }
 
     public UpdateQuestionView() {
@@ -93,13 +94,15 @@ public class UpdateQuestionView {
                 questionText.setVisible(false);
 
                 if (!(tfgetQuestionID.getText().equals(""))) {
-                    lblThisIsTheQuestion.setVisible(true);
-                    questionText.setText(Manager.questionBankProvider().get(Integer.parseInt(tfgetQuestionID.getText()) - 1).getText());
-                    questionText.setVisible(true);
-                    lblEmptyField3.setVisible(false);
-                    lblUpdateQuestion.setVisible(true);
-                    tfUpdateQuestion.setVisible(true);
-                    btnSendUpdateQuestion.setVisible(true);
+                    if(Manager.isNumeric(tfgetQuestionID.getText())){
+                        lblThisIsTheQuestion.setVisible(true);
+                        questionText.setText(Manager.questionBankProvider().get(Integer.parseInt(tfgetQuestionID.getText()) - 1).getText());
+                        questionText.setVisible(true);
+                        lblEmptyField3.setVisible(false);
+                        lblUpdateQuestion.setVisible(true);
+                        tfUpdateQuestion.setVisible(true);
+                        btnSendUpdateQuestion.setVisible(true);
+                    }
                 } else {
                     lblEmptyField3.setVisible(true);
                 }
