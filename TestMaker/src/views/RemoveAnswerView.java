@@ -1,6 +1,4 @@
-package Views;
-
-import static constants.Constants.REMOVE;
+package views;
 
 import entities.Manager;
 import entities.questions.MultipleChoiceQuestion;
@@ -18,14 +16,14 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
+import static constants.Constants.*;
+
 public class RemoveAnswerView {
     private GridPane RemoveAnswer = new GridPane();
     private Label lblGetQuestionIDToRemove = new Label("What is the ID of the question you'd like to update?");
     private TextField tfGetQuestionIDToRemove = new TextField();
     private Button btnGetQuestionIDToRemove = new Button("Get");
     private Label lblEmptyField5 = new Label("This field cannot be empty");
-
-    private String style = "-fx-text-fill: #191970;-fx-font-size: 1.1em;";
 
     public GridPane getGPremoveAnswer() {
         return this.RemoveAnswer;
@@ -40,9 +38,9 @@ public class RemoveAnswerView {
     }
 
     public RemoveAnswerView() {
-    	RemoveAnswer.setStyle("-fx-background-color: #AFDCEC	");
-    	btnGetQuestionIDToRemove.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-    	lblGetQuestionIDToRemove.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	RemoveAnswer.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+    	btnGetQuestionIDToRemove.setStyle(STYLE_TRICOLOR_BLACK);
+    	lblGetQuestionIDToRemove.setStyle(STYLE_BLUE_TEXT);
     	RemoveAnswer.setPadding(new Insets(10));
         RemoveAnswer.setHgap(10);
         RemoveAnswer.setVgap(10);
@@ -64,9 +62,9 @@ public class RemoveAnswerView {
                 ToggleGroup tglOptions = new ToggleGroup();
                 Label successLabel = new Label();
                 Label lblText = new Label();
-                lblText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                lblText.setStyle(STYLE_BLUE_TEXT);
                 Button sendRemoveButton = new Button(REMOVE);
-                sendRemoveButton.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+                sendRemoveButton.setStyle(STYLE_TRICOLOR_BLACK);
                 sendRemoveButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -102,7 +100,7 @@ public class RemoveAnswerView {
                                 String optionText = ((MultipleChoiceQuestion) quest).getOptions().get(i).getOptionText();
                                 RadioButton temp = new RadioButton(optionText);
                                 temp.setToggleGroup(tglOptions);
-                                temp.setStyle(style);
+                                temp.setStyle(STYLE_BLUE_TEXT);
                                 RemoveAnswer.add(temp, 1, i + 4);
                             }
                             RemoveAnswer.add(sendRemoveButton, 1, i + 5);

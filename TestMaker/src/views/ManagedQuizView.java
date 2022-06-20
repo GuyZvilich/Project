@@ -1,4 +1,4 @@
-package Views;
+package views;
 
 import entities.Set;
 import entities.questions.MultipleChoiceOption;
@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+import static constants.Constants.*;
 import static entities.Manager.*;
 
 public class ManagedQuizView {
@@ -24,8 +25,6 @@ public class ManagedQuizView {
     private Button btnGenerate = new Button("Generate");
     private Button btnSendQuestionOn = new Button("Add To Quiz");
 
-    private String style = "-fx-text-fill: #191970;-fx-font-size: 1.1em;";
-
     public GridPane getUserManaged() {
         return userManaged;
     }
@@ -35,16 +34,16 @@ public class ManagedQuizView {
     }
 
     public ManagedQuizView() {
-    	questionState.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	btnGenerate.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-    	btnSendQuestionOn.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-    	userManaged.setStyle("-fx-background-color: #AFDCEC	");
-    	managedQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
-        listOfQuestions.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF; -fx-min-width: 250; -fx-padding: 10");
+    	questionState.setStyle(STYLE_BLUE_TEXT);
+    	btnGenerate.setStyle(STYLE_TRICOLOR_BLACK);
+    	btnSendQuestionOn.setStyle(STYLE_TRICOLOR_BLACK);
+    	userManaged.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+    	managedQuizPresenter.setStyle(STYLE_BLUE_DUO);
+        listOfQuestions.setStyle(STYLE_BLUE_DUO_EXTEND);
     	
     	
     	Button btnGetQuestion = new Button("Get");
-    	btnGetQuestion.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+    	btnGetQuestion.setStyle(STYLE_TRICOLOR_BLACK);
         
 
         btnGetQuestion.setOnAction(new EventHandler<ActionEvent>() {
@@ -75,23 +74,23 @@ public class ManagedQuizView {
                 if (!questionState.isVisible()) {
                     Question question = questionBankProvider().get(Integer.parseInt(index) - 1);
                     Label questionText = new Label("Question: " + question.getText());
-                    questionText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                    questionText.setStyle(STYLE_BLUE_TEXT);
                     if (question instanceof OpenEndQuestion) {
                         questionWording.add(questionText, 1, 1);
                         Label ans1 = new Label("Answer: " + ((OpenEndQuestion) question).getRightAnswer());
-                        ans1.setStyle(style);
+                        ans1.setStyle(STYLE_BLUE_TEXT);
                         questionWording.add(ans1, 1, 2);
                     }
                     if (question instanceof MultipleChoiceQuestion) {
                         questionWording.add(questionText, 1, 1);
                         Label ans2 = new Label("Answers:");
-                        ans2.setStyle(style);
+                        ans2.setStyle(STYLE_BLUE_TEXT);
                         questionWording.add(ans2, 1, 2);
                         int i = 3;
                         for (MultipleChoiceOption mco : ((MultipleChoiceQuestion) question).getOptions().getSet())
                             if (mco != null) {
                                 CheckBox check = new CheckBox(mco.getOptionText());
-                                check.setStyle(style);
+                                check.setStyle(STYLE_BLUE_TEXT);
                                 questionWording.add(check, 1, i);
                                 i++;
                             }
@@ -137,7 +136,7 @@ public class ManagedQuizView {
                         content = ((Label) node).getText();
                 }
                 Label lbl = new Label(content + "\nQuestion " + question.getQuestionId());
-                lbl.setStyle(style);
+                lbl.setStyle(STYLE_BLUE_TEXT);
                 listOfQuestions.setContent(lbl);
 
             }
@@ -146,7 +145,7 @@ public class ManagedQuizView {
             @Override
             public void handle(ActionEvent event) {
                 Label Quiz = new Label(createManagedWindowQuiz().toString());
-                Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                Quiz.setStyle(STYLE_BLUE_TEXT);
                 managedQuizPresenter.setContent(Quiz);
                 managedQuizPresenter.setVisible(true);
             }
@@ -160,7 +159,7 @@ public class ManagedQuizView {
         userManaged.setHgap(10);
         userManaged.setVgap(10);
         Label choose = new Label("Choose a Question:");
-        choose.setStyle(style);
+        choose.setStyle(STYLE_BLUE_TEXT);
         userManaged.add(choose, 1, 1);
         userManaged.add(new ComboBox<String>(), 1, 2);
         userManaged.add(btnGetQuestion, 1, 3);

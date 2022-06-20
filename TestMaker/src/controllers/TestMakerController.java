@@ -1,7 +1,7 @@
-package Controllers;
+package controllers;
 
-import Listeners.UIEventListener;
-import Views.AbstractView;
+import listeners.UIEventListener;
+import views.AbstractView;
 
 
 public class TestMakerController implements UIEventListener {

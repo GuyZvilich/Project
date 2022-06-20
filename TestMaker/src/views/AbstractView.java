@@ -1,6 +1,6 @@
-package Views;
+package views;
 
-import Listeners.UIEventListener;
+import listeners.UIEventListener;
 
 public interface AbstractView {
     void registerListener(UIEventListener listener);

@@ -1,7 +1,8 @@
 package application;
 
-import Controllers.TestMakerController;
-import Views.TestMakerView;
+import controllers.TestMakerController;
+import javafx.scene.image.Image;
+import views.TestMakerView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import entities.Manager;
@@ -12,7 +13,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            primaryStage.setTitle("Test maker project");
+            primaryStage.setTitle("Test Maker");
+            primaryStage.getIcons().add(new Image("application/assets/pictures/TestMaker.png"));
             TestMakerView theView = new TestMakerView(primaryStage);
             TestMakerController controller = new TestMakerController(theView);
 
@@ -23,7 +25,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        //Manager.removeQuestionFromBank(41);
         Manager.saveQuestionBank();
     }
 }

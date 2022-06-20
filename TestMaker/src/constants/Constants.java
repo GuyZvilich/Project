@@ -80,4 +80,22 @@ public class Constants {
     public static final String MENU_OPTION_9 = "Quit out";
 
     public static final String MENU_MESSAGE = "Hello and welcome to the Quiz Maker.\n\nPlease choose which action you'd like to make\n======================================================";
+
+
+    public static final String STYLE_BLUE_TEXT = "-fx-text-fill: #191970;-fx-font-size: 1.1em;";
+    public static final String STYLE_BLUE_TEXT_2 = "-fx-text-fill: #191970;-fx-font-size: 2.0em;";
+    public static final String STYLE_BLUE_TEXT_15 = "-fx-text-fill: #191970;-fx-font-size: 1.5em;";
+    public static final String STYLE_BLUE_TEXT_BOLD = "-fx-text-fill: #151B54;-fx-font-size: 3.0em;-fx-font-weight: bold;";
+
+    public static final String STYLE_RED_TEXT = "-fx-text-fill: red;-fx-font-size: 1.1em;";
+
+    public static final String STYLE_BLUE_DUO = "-fx-color: #1aa7ff;-fx-background: #ADDFFF";
+    public static final String STYLE_BLUE_DUO_EXTEND = "-fx-color: #1aa7ff;-fx-background: #ADDFFF; -fx-min-width: 250; -fx-padding: 10";
+
+    public static final String STYLE_TRICOLOR_BLACK = "-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );";
+    public static final String STYLE_TRICOLOR_BLUE = "-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );";
+
+    public static final String STYLE_BG_BLUE = "-fx-background-color: #227391;";
+    public static final String STYLE_BG_LIGHT_BLUE = "-fx-background-color: #45add3;";
+    public static final String STYLE_BG_LIGHT_BLUE_MAX = "-fx-background-color: #AFDCEC;";
 }

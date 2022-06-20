@@ -1,8 +1,4 @@
-package Views;
-
-import static constants.Constants.QUESTION_TO_USER_05_5;
-import static constants.Constants.QUESTION_TO_USER_08;
-import static constants.Constants.UPDATE;
+package views;
 
 import entities.Manager;
 import entities.questions.MultipleChoiceQuestion;
@@ -20,14 +16,14 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
+import static constants.Constants.*;
+
 public class UpdateAnswerView {
     private GridPane UpdateAnswer = new GridPane();
     private Label lblGetQuestionIDForAnswer = new Label(QUESTION_TO_USER_08);
     private TextField tfGetQuestionIDForAnswer = new TextField();
     private Button btnGetQuestionIDForAnswer = new Button("Get");
     private Label lblEmptyField4 = new Label("One of the required fields are empty");
-
-    private String style = "-fx-text-fill: #191970;-fx-font-size: 1.1em;";
 
     public GridPane getGPupdateAnswer() {
         return this.UpdateAnswer;
@@ -42,9 +38,9 @@ public class UpdateAnswerView {
     }
 
     public UpdateAnswerView() {
-        UpdateAnswer.setStyle("-fx-background-color: #AFDCEC	");
-        btnGetQuestionIDForAnswer.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-        lblGetQuestionIDForAnswer.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+        UpdateAnswer.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+        btnGetQuestionIDForAnswer.setStyle(STYLE_TRICOLOR_BLACK);
+        lblGetQuestionIDForAnswer.setStyle(STYLE_BLUE_TEXT);
         UpdateAnswer.setPadding(new Insets(10));
         UpdateAnswer.setVgap(10);
         UpdateAnswer.setHgap(10);
@@ -70,7 +66,7 @@ public class UpdateAnswerView {
                 TextField textFieldAnswer = new TextField();
                 Label successLabel = new Label();
                 Button sendButton = new Button(UPDATE);
-                sendButton.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+                sendButton.setStyle(STYLE_TRICOLOR_BLACK);
                 sendButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -107,26 +103,26 @@ public class UpdateAnswerView {
                         int i = 0;
                         if (quest instanceof OpenEndQuestion) {
                             Label ans = new Label("The answer to the question is:");
-                            ans.setStyle(style);
+                            ans.setStyle(STYLE_BLUE_TEXT);
                             UpdateAnswer.add(ans, 1, 3);
                             Label right = new Label(((OpenEndQuestion) quest).getRightAnswer());
-                            right.setStyle(style);
+                            right.setStyle(STYLE_BLUE_TEXT);
                             UpdateAnswer.add(right, 1, 4);
                         }
                         if (quest instanceof MultipleChoiceQuestion) {
                             Label ans = new Label("The answer options to the question are:");
-                            ans.setStyle(style);
+                            ans.setStyle(STYLE_BLUE_TEXT);
                             UpdateAnswer.add(ans, 1, 3);
                             for (; i < ((MultipleChoiceQuestion) quest).getOptions().getSize(); i++) {
                                 String optionText = ((MultipleChoiceQuestion) quest).getOptions().get(i).getOptionText();
                                 RadioButton temp = new RadioButton(optionText);
                                 temp.setToggleGroup(tglOptions);
-                                temp.setStyle(style);
+                                temp.setStyle(STYLE_BLUE_TEXT);
                                 UpdateAnswer.add(temp, 1, i + 4);
                             }
                         }
                         Label info = new Label(QUESTION_TO_USER_05_5);
-                        info.setStyle(style);
+                        info.setStyle(STYLE_BLUE_TEXT);
                         UpdateAnswer.add(info, 1, i + 5);
                         UpdateAnswer.add(textFieldAnswer, 2, i + 5);
                         UpdateAnswer.add(sendButton, 3, i + 5);

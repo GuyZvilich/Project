@@ -1,4 +1,4 @@
-package Views;
+package views;
 
 import entities.Manager;
 import entities.Quiz;
@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-import static constants.Constants.QUESTION_TO_USER_20;
+import static constants.Constants.*;
 import static entities.Manager.lastCreatedQuizBank;
 
 public class CopyQuizView {
@@ -54,12 +54,12 @@ public class CopyQuizView {
     }
 
     public CopyQuizView() {
-    	CopyQuiz.setStyle("-fx-background-color: #AFDCEC	");
-    	copyQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
-    	warning.setStyle("-fx-text-fill: Red;");
-    	lblGetDate.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblSlash1.setStyle("-fx-text-fill: #191970;-fx-font-size: 2.0em;");
-    	lblSlash2.setStyle("-fx-text-fill: #191970;-fx-font-size: 2.0em;");
+    	CopyQuiz.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+    	copyQuizPresenter.setStyle(STYLE_BLUE_DUO);
+    	warning.setStyle(STYLE_RED_TEXT);
+    	lblGetDate.setStyle(STYLE_BLUE_TEXT);
+    	lblSlash1.setStyle(STYLE_BLUE_TEXT_2);
+    	lblSlash2.setStyle(STYLE_BLUE_TEXT_2);
     	tfGetDay.setMaxWidth(50.0);
     	tfGetMonth.setMaxWidth(50.0);
     	tfGetYear.setMaxWidth(80.0);
@@ -72,13 +72,13 @@ public class CopyQuizView {
         lblIsValid.setVisible(false);
         copyByDate.setVisible(false);
        
-        btnCopyByDate.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnCopyByDate.setStyle(STYLE_TRICOLOR_BLACK);
         copyByDate.setCenter(ByDate);
         copyByDate.setBottom(btnCopyByDate);
         
         copyByLast10.setVisible(false);
 
-        btnCopyByLast10.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnCopyByLast10.setStyle(STYLE_TRICOLOR_BLACK);
         copyByLast10.setCenter(ByLast10);
         copyByLast10.setBottom(btnCopyByLast10);
         ByDate.setHgap(10);
@@ -95,8 +95,8 @@ public class CopyQuizView {
         copyQuizPresenter.setVisible(false);
         copyQuizPresenter.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         
-        btnByDate.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-        btnByLast10.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnByDate.setStyle(STYLE_TRICOLOR_BLUE);
+        btnByLast10.setStyle(STYLE_TRICOLOR_BLUE);
 
 
         HBox hbCopyOptions = new HBox();
@@ -111,14 +111,14 @@ public class CopyQuizView {
                 }
                 copyByDate.setVisible(true);
                 for(int i=0;i<hbCopyOptions.getChildren().size();i++) 
-                	hbCopyOptions.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                	hbCopyOptions.getChildren().get(i).setStyle(STYLE_BG_LIGHT_BLUE);
                 lblGetDate.setVisible(true);
                 tfGetDay.setVisible(true);
                 lblSlash1.setVisible(true);
                 tfGetMonth.setVisible(true);
                 lblSlash2.setVisible(true);
                 tfGetYear.setVisible(true);
-                btnByDate.setStyle("-fx-background-color: #227391;");
+                btnByDate.setStyle(STYLE_BG_BLUE);
             }
         });
         
@@ -131,9 +131,9 @@ public class CopyQuizView {
                     copyOption.getChildren().get(i).setVisible(false);
                 }
                 for(int i=0;i<hbCopyOptions.getChildren().size();i++) 
-                	hbCopyOptions.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
+                	hbCopyOptions.getChildren().get(i).setStyle(STYLE_BG_LIGHT_BLUE);
                 
-                btnByLast10.setStyle("-fx-background-color: #227391;");
+                btnByLast10.setStyle(STYLE_BG_BLUE);
                 ByLast10.getChildren().removeAll();
                 ToggleGroup tglLast10Quiezes = new ToggleGroup();
                 VBox vb10Options = new VBox();
@@ -168,12 +168,12 @@ public class CopyQuizView {
                     isValid = Manager.isValid(date);
                     if(isValid){
                         Label Quiz = new Label(Manager.copyQuizFromFileToWindow(date));
-                        Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                        Quiz.setStyle(STYLE_BLUE_TEXT);
                         copyQuizPresenter.setContent(Quiz);
                         copyQuizPresenter.setVisible(true);
                     } else {
                         lblIsValid.setText("The date is not valid");
-                        lblIsValid.setStyle("-fx-text-fill: red;-fx-font-size: 1.1em;");
+                        lblIsValid.setStyle(STYLE_RED_TEXT);
                         lblIsValid.setVisible(true);
                     }
                 }
@@ -196,7 +196,7 @@ public class CopyQuizView {
                     Manager.quizCopyFile(copyQuiz);
                 }
                 Label Quiz = new Label(test);
-                Quiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+                Quiz.setStyle(STYLE_BLUE_TEXT);
                 copyQuizPresenter.setContent(Quiz);
                 copyQuizPresenter.setVisible(true);
             }

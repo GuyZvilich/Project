@@ -1,8 +1,6 @@
-package Views;
+package views;
 
-import static constants.Constants.QUESTION_TO_USER_01;
-import static constants.Constants.QUESTION_TO_USER_08;
-import static constants.Constants.UPDATE;
+import static constants.Constants.*;
 import static entities.Manager.updateQuestionTextInWindow;
 
 import entities.Manager;
@@ -45,13 +43,13 @@ public class UpdateQuestionView {
     }
 
     public UpdateQuestionView() {
-    	UpdateQuestion.setStyle("-fx-background-color: #AFDCEC	");
-    	btnSendQuestionID.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-    	btnSendUpdateQuestion.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
-    	lblgetQuestionID.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblThisIsTheQuestion.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	questionText.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblUpdateQuestion.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	UpdateQuestion.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+    	btnSendQuestionID.setStyle(STYLE_TRICOLOR_BLACK);
+    	btnSendUpdateQuestion.setStyle(STYLE_TRICOLOR_BLACK);
+    	lblgetQuestionID.setStyle(STYLE_BLUE_TEXT);
+    	lblThisIsTheQuestion.setStyle(STYLE_BLUE_TEXT);
+    	questionText.setStyle(STYLE_BLUE_TEXT);
+    	lblUpdateQuestion.setStyle(STYLE_BLUE_TEXT);
     	UpdateQuestion.setPadding(new Insets(10));
         UpdateQuestion.setVgap(10);
         UpdateQuestion.setHgap(10);

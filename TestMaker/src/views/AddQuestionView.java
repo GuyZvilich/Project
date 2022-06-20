@@ -1,9 +1,6 @@
-package Views;
+package views;
 
-import static constants.Constants.QUESTION_TO_USER_03_2;
-import static constants.Constants.SUCCESS_MESSAGE_01;
-import static constants.Constants.UPDATE;
-import static constants.Constants.answerNumberX;
+import static constants.Constants.*;
 import static entities.Manager.isMoreThanOneCorrect;
 import static entities.Manager.isNoneCorrect;
 
@@ -127,32 +124,32 @@ public class AddQuestionView {
     }
 
     public AddQuestionView() {
-    	addQuestion.setStyle("-fx-background-color: #AFDCEC	");
-    	lblwhatQuestion.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblwhatAnswer.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer1.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer2.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer3.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer4.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer5.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer6.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer7.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblanswer8.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue1.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue2.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue3.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue4.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue5.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue6.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue7.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblIsTrue8.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
-    	lblVerdict.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	addQuestion.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+    	lblwhatQuestion.setStyle(STYLE_BLUE_TEXT);
+    	lblwhatAnswer.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer1.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer2.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer3.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer4.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer5.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer6.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer7.setStyle(STYLE_BLUE_TEXT);
+    	lblanswer8.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue1.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue2.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue3.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue4.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue5.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue6.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue7.setStyle(STYLE_BLUE_TEXT);
+    	lblIsTrue8.setStyle(STYLE_BLUE_TEXT);
+    	lblVerdict.setStyle(STYLE_BLUE_TEXT);
         addQuestion.setVisible(false);
         addQuestion.setPadding(new Insets(10));
         
-        btnOpenQuestion.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnOpenQuestion.setStyle(STYLE_TRICOLOR_BLUE);
         
-        btnMultiQuestion.setStyle("-fx-background-color: #45add3; -fx-background-radius: 6;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnMultiQuestion.setStyle(STYLE_TRICOLOR_BLUE);
         HBox typeQuestion = new HBox();
         typeQuestion.setPadding(new Insets(10));
         typeQuestion.getChildren().addAll(btnOpenQuestion, btnMultiQuestion);
@@ -165,9 +162,9 @@ public class AddQuestionView {
         gettingQuestionMulti.setCenter(gettingQuestionAnswers);
         gettingQuestionAnswers.setVgap(10);
         gettingQuestionAnswers.setHgap(10);
-        btnSendNewQuestion.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnSendNewQuestion.setStyle(STYLE_TRICOLOR_BLACK);
         btnSendNewQuestion.setVisible(false);
-        btnNewMultiOptions.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+        btnNewMultiOptions.setStyle(STYLE_TRICOLOR_BLACK);
         btnNewMultiOptions.setVisible(false);
         Label lblEmptyField2 = new Label("One of the required fields are empty");
         lblEmptyField2.setVisible(false);
@@ -229,8 +226,8 @@ public class AddQuestionView {
                 for (int i = 0; i < gettingQuestionAnswers.getChildren().size(); i++)
                     gettingQuestionAnswers.getChildren().get(i).setVisible(false);
                 for(int i=0;i<typeQuestion.getChildren().size();i++)
-                	typeQuestion.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
-                btnOpenQuestion.setStyle("-fx-background-color: #227391;");
+                	typeQuestion.getChildren().get(i).setStyle(STYLE_BG_LIGHT_BLUE);
+                btnOpenQuestion.setStyle(STYLE_BG_BLUE);
                 textClear();
                 lblwhatQuestion.setVisible(true);
                 tfwhatQuestion.setVisible(true);
@@ -265,8 +262,8 @@ public class AddQuestionView {
                 for (int i = 0; i < gettingQuestionAnswers.getChildren().size(); i++)
                     gettingQuestionAnswers.getChildren().get(i).setVisible(false);
                 for(int i=0;i<typeQuestion.getChildren().size();i++)
-                	typeQuestion.getChildren().get(i).setStyle("-fx-background-color: #45add3;");
-                btnMultiQuestion.setStyle("-fx-background-color: #227391;");
+                	typeQuestion.getChildren().get(i).setStyle(STYLE_BG_LIGHT_BLUE);
+                btnMultiQuestion.setStyle(STYLE_BG_BLUE);
                 textClear();
                 lblwhatQuestion.setVisible(true);
                 tfwhatQuestion.setVisible(true);

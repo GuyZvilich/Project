@@ -1,4 +1,4 @@
-package Views;
+package views;
 
 import entities.Manager;
 import javafx.event.ActionEvent;
@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
-import static constants.Constants.QUESTION_TO_USER_09;
+import static constants.Constants.*;
 
 public class RandomQuizView {
     GridPane RandomQuiz = new GridPane();
@@ -34,11 +34,11 @@ public class RandomQuizView {
     }
 
     public RandomQuizView() {
-       RandomQuiz.setStyle("-fx-background-color: #AFDCEC	");
-       RandomQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
-       btnGenerateQuiz.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
+       RandomQuiz.setStyle(STYLE_BG_LIGHT_BLUE_MAX);
+       RandomQuizPresenter.setStyle(STYLE_BLUE_DUO);
+       btnGenerateQuiz.setStyle(STYLE_TRICOLOR_BLACK);
     	Label lblRandomQuiz = new Label(QUESTION_TO_USER_09);
-    	lblRandomQuiz.setStyle("-fx-text-fill: #191970;-fx-font-size: 1.1em;");
+    	lblRandomQuiz.setStyle(STYLE_BLUE_TEXT);
 
         RandomQuiz.setPadding(new Insets(10));
         RandomQuiz.setHgap(10);

@@ -1,4 +1,4 @@
-package Listeners;
+package listeners;
 
 public interface UIEventListener {
     void showHome();
