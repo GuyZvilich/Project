@@ -114,11 +114,14 @@ public class UpdateAnswerView {
                             UpdateAnswer.add(right, 1, 4);
                         }
                         if (quest instanceof MultipleChoiceQuestion) {
-                            UpdateAnswer.add(new Label("The answer options to the question are:"), 1, 3);
+                            Label ans = new Label("The answer options to the question are:");
+                            ans.setStyle(style);
+                            UpdateAnswer.add(ans, 1, 3);
                             for (; i < ((MultipleChoiceQuestion) quest).getOptions().getSize(); i++) {
                                 String optionText = ((MultipleChoiceQuestion) quest).getOptions().get(i).getOptionText();
                                 RadioButton temp = new RadioButton(optionText);
                                 temp.setToggleGroup(tglOptions);
+                                temp.setStyle(style);
                                 UpdateAnswer.add(temp, 1, i + 4);
                             }
                         }

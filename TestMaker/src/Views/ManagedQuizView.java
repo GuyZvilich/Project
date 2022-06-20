@@ -40,7 +40,7 @@ public class ManagedQuizView {
     	btnSendQuestionOn.setStyle("-fx-background-color: #eaf6fa; -fx-background-radius: 20;-fx-background-insets: 0,1,1;-fx-text-fill: black;-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );");
     	userManaged.setStyle("-fx-background-color: #AFDCEC	");
     	managedQuizPresenter.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
-        listOfQuestions.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF");
+        listOfQuestions.setStyle("-fx-color: #1aa7ff;-fx-background: #ADDFFF; -fx-min-width: 250; -fx-padding: 10");
     	
     	
     	Button btnGetQuestion = new Button("Get");
@@ -159,7 +159,9 @@ public class ManagedQuizView {
         userManaged.setPadding(new Insets(10));
         userManaged.setHgap(10);
         userManaged.setVgap(10);
-        userManaged.add(new Label("Choose a Question:"), 1, 1);
+        Label choose = new Label("Choose a Question:");
+        choose.setStyle(style);
+        userManaged.add(choose, 1, 1);
         userManaged.add(new ComboBox<String>(), 1, 2);
         userManaged.add(btnGetQuestion, 1, 3);
         userManaged.add(questionState, 3, 1);
